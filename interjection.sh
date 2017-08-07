@@ -4,6 +4,8 @@ if which dpkg > /dev/null 2>&1; then
     PACKAGES="$(dpkg --get-selections | tr -s [:blank:] | cut -f 1)"
 elif which pacman > /dev/null 2>&1; then
     PACKAGES="$(pacman -Q | cut -d ' ' -f 1)"
+elif which pkginfo > /dev/null 2>&1; then
+    PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
 else
     # TODO portage and rpm and other package backends
     echo 'Your package manager is not supported.'
