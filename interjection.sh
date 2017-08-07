@@ -5,7 +5,7 @@ if which dpkg > /dev/null 2>&1; then
 elif which pacman > /dev/null 2>&1; then
     PACKAGES="$(pacman -Q | cut -d ' ' -f 1)"
 elif which rpm > /dev/null 2>&1; then
-	PACKAGES=$(rpm -qa --qf '%{NAME}\n')
+    PACKAGES=$(rpm -qa --qf '%{NAME}\n')
 elif which pkginfo > /dev/null 2>&1; then
     PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
 else
