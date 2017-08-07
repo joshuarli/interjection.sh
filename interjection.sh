@@ -7,7 +7,7 @@ elif which pacman > /dev/null 2>&1; then
 elif which rpm > /dev/null 2>&1; then
 	PACKAGES=$(rpm -qa --qf '%{NAME}\n')
 else
-    # TODO portage and rpm and other package backends
+    # TODO portage and other package backends
     echo 'Your package manager is not supported.'
     exit 1
 fi
