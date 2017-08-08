@@ -8,6 +8,8 @@ elif which rpm > /dev/null 2>&1; then
     PACKAGES=$(rpm -qa --qf '%{NAME}\n')
 elif which pkginfo > /dev/null 2>&1; then
     PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
+elif which xbps-install > /dev/null 2>&1; then
+	PACKAGES="$(xpkg | xargs echo -n)"
 else
     # TODO portage and other package backends
     echo 'Your package manager is not supported.'
