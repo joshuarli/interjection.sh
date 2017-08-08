@@ -9,10 +9,10 @@ elif which rpm > /dev/null 2>&1; then
 elif which pkginfo > /dev/null 2>&1; then
     PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
 elif which xpkg > /dev/null 2>&1; then
-	PACKAGES="$(xpkg | xargs echo -n)"
+    PACKAGES="$(xpkg | xargs echo -n)"
 elif which xbps-install > /dev/null 2>&1; then
-	echo "Package 'xtools' is not installed. You can install it with 'xbps-install xtools'"
-	exit 1
+    echo "Package 'xtools' is not installed. You can install it with 'xbps-install xtools'"
+    exit 1
 else
     # TODO portage and other package backends
     echo 'Your package manager is not supported.'
