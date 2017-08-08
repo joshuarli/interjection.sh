@@ -8,7 +8,7 @@ elif which rpm > /dev/null 2>&1; then
     PACKAGES=$(rpm -qa --qf '%{NAME}\n')
 elif which pkginfo > /dev/null 2>&1; then
     PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
-elif which xtools > /dev/null 2>&1; then
+elif which xpkg > /dev/null 2>&1; then
 	PACKAGES="$(xpkg | xargs echo -n)"
 elif which xbps-install > /dev/null 2>&1; then
 	echo "Package 'xtools' is not installed. You can install it with 'xbps-install xtools'"
