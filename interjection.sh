@@ -13,8 +13,12 @@ elif which xpkg > /dev/null 2>&1; then
 elif which xbps-install > /dev/null 2>&1; then
     echo "Package 'xtools' is not installed. You can install it with 'xbps-install xtools'"
     exit 1
+elif which equery > /dev/null 2>&1; then
+    PACKAGES="$(equery list -F '$name' '*')"
+elif which emerge > /dev/null 2>&1; then
+    PACKAGES="$(ls -d -1 /var/db/pkg/*/* | cut -c 13- | cut -d/ -f1 --complement | sed 's/-[0-9].*//')"
 else
-    # TODO portage and other package backends
+    # TODO other package backends
     echo 'Your package manager is not supported.'
     exit 1
 fi
