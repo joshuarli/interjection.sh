@@ -8,6 +8,7 @@ Inspired by [this](https://www.reddit.com/r/linuxmasterrace/comments/6glb85/sorr
 * `dpkg`
 * `pacman`
 * `pkginfo`
+* `portage`
 * `rpm`
 * `xpkg`
 
