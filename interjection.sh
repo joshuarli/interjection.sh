@@ -13,6 +13,8 @@ elif which xpkg > /dev/null 2>&1; then
 elif which xbps-install > /dev/null 2>&1; then
     echo "Package 'xtools' is not installed. You can install it with 'xbps-install xtools'"
     exit 1
+elif which equery > /dev/null 2>&1; then
+	PACKAGES="$(equery list -F '$name' '*')"
 else
     # TODO portage and other package backends
     echo 'Your package manager is not supported.'
