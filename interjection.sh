@@ -3,7 +3,7 @@
 if command -v dpkg > /dev/null 2>&1; then
     PACKAGES="$(dpkg --get-selections | tr -s [:blank:] | cut -f 1)"
 elif command -v pacman > /dev/null 2>&1; then
-    PACKAGES="$(pacman -Q | cut -d ' ' -f 1)"
+    PACKAGES="$(pacman -Qq)"
 elif command -v rpm > /dev/null 2>&1; then
     PACKAGES=$(rpm -qa --qf '%{NAME}\n')
 elif command -v pkginfo > /dev/null 2>&1; then
