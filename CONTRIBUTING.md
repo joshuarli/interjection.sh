@@ -2,10 +2,10 @@
 
 I'm glad you're interested in contributing! :tada: :tada: :tada:
 
-Chances are, you're trying to add support for a new package management system. You'll want to add an appropriate elif to the package manager detection and text processing logic in `interjection.sh`:
+Chances are, you're trying to add support for a new package management system. You'll want to add an appropriate `elif` block to the package manager detection and package output text processing logic in `interjection.sh`:
 
 ```sh
-elif which your-package-program > /dev/null 2>&1; then
+elif command -v your-package-manager > /dev/null 2>&1; then
     PACKAGES="$(your-logic-here)"
 ```
 
