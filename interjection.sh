@@ -17,6 +17,8 @@ elif command -v equery > /dev/null 2>&1; then
     PACKAGES="$(equery list -F '$name' '*')"
 elif command -v emerge > /dev/null 2>&1; then
     PACKAGES="$(ls -d -1 /var/db/pkg/*/* | cut -c 13- | cut -d/ -f1 --complement | sed 's/-[0-9].*//')"
+elif command -v brew > /dev/null 2>&1; then
+    PACKAGES="$(brew list)"
 else
     # TODO other package backends
     echo 'Your package manager is not supported.'
