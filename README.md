@@ -28,3 +28,9 @@ As the output can be quite large, you may want to pipe the stdout to a clipboard
 ```sh
 sh interjection.sh | xclip -i
 ```
+
+Or upload to a pastebin of your choice. Here's an example:
+
+```sh
+sh interjection.sh | curl -F c=@- https://ptpb.pw
+```
