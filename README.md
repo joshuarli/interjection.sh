@@ -5,13 +5,14 @@ Inspired by [this](https://www.reddit.com/r/linuxmasterrace/comments/6glb85/sorr
 
 ### Supported Package Management Systems
 
+* `brew`
 * `dpkg`
+* `nix`
 * `pacman`
 * `pkginfo`
 * `portage`
 * `rpm`
 * `xpkg`
-* `brew`
 
 Pull requests are more than welcome for those that are not currently supported! See [`CONTRIBUTING.md`](https://github.com/JoshuaRLi/interjection.sh/blob/master/CONTRIBUTING.md) for more information.
 

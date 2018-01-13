@@ -19,6 +19,8 @@ elif command -v emerge > /dev/null 2>&1; then
     PACKAGES="$(ls -d -1 /var/db/pkg/*/* | cut -c 13- | cut -d/ -f1 --complement | sed 's/-[0-9].*//')"
 elif command -v brew > /dev/null 2>&1; then
     PACKAGES="$(brew list)"
+elif command -v nixos-version > /dev/null 2>&1; then
+    PACKAGES="$(ls -d -1 /nix/store/*/ | cut -c 45- | sed 's/.$//' | sed 's/-[0-9].*//' | sort | uniq)"
 else
     # TODO other package backends
     echo 'Your package manager is not supported.'
