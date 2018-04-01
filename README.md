@@ -5,6 +5,7 @@ Inspired by [this](https://www.reddit.com/r/linuxmasterrace/comments/6glb85/sorr
 
 ### Supported Package Management Systems
 
+* `apk`
 * `brew`
 * `dpkg`
 * `nix`

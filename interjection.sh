@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-if command -v dpkg > /dev/null 2>&1; then
+if command -v apk > /dev/null 2>&1; then
+    PACKAGES="$(apk info)"
+elif command -v dpkg > /dev/null 2>&1; then
     PACKAGES="$(dpkg --get-selections | tr -s [:blank:] | cut -f 1)"
 elif command -v pacman > /dev/null 2>&1; then
     PACKAGES="$(pacman -Qq)"
