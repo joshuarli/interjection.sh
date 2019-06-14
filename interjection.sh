@@ -3,13 +3,13 @@
 if command -v apk > /dev/null 2>&1; then
     PACKAGES="$(apk info)"
 elif command -v dpkg > /dev/null 2>&1; then
-    PACKAGES="$(dpkg --get-selections | tr -s [:blank:] | cut -f 1)"
+    PACKAGES="$(dpkg --get-selections | tr -s '[:blank:]' | cut -f1)"
 elif command -v pacman > /dev/null 2>&1; then
     PACKAGES="$(pacman -Qq)"
 elif command -v rpm > /dev/null 2>&1; then
     PACKAGES=$(rpm -qa --qf '%{NAME}\n')
 elif command -v pkginfo > /dev/null 2>&1; then
-    PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
+    PACKAGES="$(pkginfo -i | cut -d' ' -f1)"
 elif command -v xpkg > /dev/null 2>&1; then
     PACKAGES="$(xpkg)"
 elif command -v xbps-install > /dev/null 2>&1; then
@@ -18,6 +18,7 @@ elif command -v xbps-install > /dev/null 2>&1; then
 elif command -v equery > /dev/null 2>&1; then
     PACKAGES="$(equery list -F '$name' '*')"
 elif command -v emerge > /dev/null 2>&1; then
+    # TODO: --complement is a GNU cut feature, not POSIX cut
     PACKAGES="$(ls -d -1 /var/db/pkg/*/* | cut -c 13- | cut -d/ -f1 --complement | sed 's/-[0-9].*//')"
 elif command -v brew > /dev/null 2>&1; then
     PACKAGES="$(brew list)"
@@ -29,9 +30,9 @@ else
     exit 1
 fi
 
-SLASH="$(printf '%s' "$PACKAGES" | tr '\n' '/')"
-PLUS="$(printf '%s' "$SLASH" | sed 's/\// plus /g')"
-COMMA="$(printf '%s' "$SLASH" | sed 's/\//, /g')"
+SLASH="$(printf %s "$PACKAGES" | tr '\n' '/')"
+PLUS="$(printf %s "$SLASH" | sed 's/\// plus /g')"
+COMMA="$(printf %s "$SLASH" | sed 's/\//, /g')"
 
 TEMPLATE="\
 I'd just like to interject for a moment. What you're referring to as Linux, \
@@ -55,4 +56,4 @@ system is basically GNU with ${COMMA}, and Linux added, or GNU/${SLASH}/Linux. \
 All the so-called \"Linux\" distributions are really distributions of GNU/${SLASH}/Linux.
 "
 
-printf '%s' "$TEMPLATE"
+printf %s "$TEMPLATE"
