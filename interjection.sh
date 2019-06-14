@@ -11,7 +11,7 @@ elif command -v rpm > /dev/null 2>&1; then
 elif command -v pkginfo > /dev/null 2>&1; then
     PACKAGES="$(pkginfo -i | cut -d ' ' -f 1)"
 elif command -v xpkg > /dev/null 2>&1; then
-    PACKAGES="$(xpkg | xargs echo -n)"
+    PACKAGES="$(xpkg)"
 elif command -v xbps-install > /dev/null 2>&1; then
     echo "Package 'xtools' is not installed. You can install it with 'xbps-install xtools'"
     exit 1
