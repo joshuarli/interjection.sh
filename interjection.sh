@@ -18,8 +18,7 @@ elif command -v xbps-install > /dev/null 2>&1; then
 elif command -v equery > /dev/null 2>&1; then
     PACKAGES="$(equery list -F '$name' '*')"
 elif command -v emerge > /dev/null 2>&1; then
-    # TODO: --complement is a GNU cut feature, not POSIX cut
-    PACKAGES="$(ls -d -1 /var/db/pkg/*/* | cut -c 13- | cut -d/ -f1 --complement | sed 's/-[0-9].*//')"
+    PACKAGES="$(ls -d -1 /var/db/pkg/*/* | sed 's/-[0-9].*//' | awk -F/ '{print $NF}')"
 elif command -v brew > /dev/null 2>&1; then
     PACKAGES="$(brew list)"
 elif command -v nixos-version > /dev/null 2>&1; then
